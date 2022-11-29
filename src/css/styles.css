@@ -18,3 +18,39 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+li{
+  list-style: none;
+}
+
+
+.list-img{
+width: 100px;
+}
+
+
+.list-header{
+font-size: 20px;
+
+}
+
+.country-list{
+  display: flex;
+     
+        flex-direction: column;
+  
+        align-content: center;
+        gap: 30px;
+}
+
+.list-list{
+ display: flex;
+        gap: 20px;
+}
+       
+.span-value{
+  font-size: 30px;
+}
+.h2-value{
+font-size: 15px;
+}
