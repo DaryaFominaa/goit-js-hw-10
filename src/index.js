@@ -18,8 +18,10 @@ function onSearch(evt) {
   name = searchName;
 
     if (!searchName) {
-       
-    Notify.warning('EMPTY FIELD');
+    
+        Notify.warning('EMPTY FIELD');
+        clearList();
+        clearMarkup();
     return;
   }
     fetchCountries(searchName)
@@ -27,10 +29,12 @@ function onSearch(evt) {
     if (data.length >= 10) {
       Notify.info('Too many matches found. Please enter a more specific name.');
     } else if (data.length > 1 && data.length < 10) {
-      createList(data);
+        createList(data);
+        clearMarkup();
       return;
     } else if ((data.length = 1)) {
-      createMarkup(data);
+        createMarkup(data);
+        clearList();
       return;
     }
   });
@@ -42,7 +46,7 @@ function createMarkup(arr) {
     <h1>${name}</h1>
     <h2 class="h2-value">Capital:<span class="span-value">${capital}</span></h2>
     <h2 class="h2-value">Population:<span class="span-value">${population}</span></h2>
-    <h2 class="h2-value">Languages:<span class="span-value">${languages}</span></h2>
+    <h2 class="h2-value">Languages: ${languages.map(el => `<span class="span-value">${el.name}</span>`)}</h2>
     </li>`
     )
     .join('');
@@ -61,3 +65,11 @@ function createList(arr) {
     .join('');
   list.innerHTML = countriesList;
 }
+
+function clearList() {
+list.innerHTML= '';
+ }
+
+ function clearMarkup() {
+divEl.innerHTML= '';
+ }
